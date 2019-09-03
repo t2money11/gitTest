@@ -1,6 +1,7 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+	"sap/m/MessageBox"
+], function (Controller, MessageBox) {
 	"use strict";
 
 	return Controller.extend("gitTest.GitTest.controller.SearchData", {
@@ -18,6 +19,11 @@ sap.ui.define([
 			
 			var oApp = this.getView().getParent();
 			oApp.to("detail");
+		},
+		
+		onHover: function () {
+			
+			MessageBox.alert("ABC");
 		}
 
 		/**

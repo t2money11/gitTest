@@ -7,7 +7,8 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Title">
 		<content>
-			<customControl:MyHeading text="Wow"></customControl:MyHeading>
+			<customControl:MyHeading text="Wow1"></customControl:MyHeading>
+			<customControl:MyButton text="ABC" hover="onHover"></customControl:MyButton>
 			<Button text="go to next" press="goNext"></Button>
 		</content>
 	</Page>
