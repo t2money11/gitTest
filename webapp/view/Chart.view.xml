@@ -152,10 +152,10 @@
 								<layoutData>
 									<FlexItemData growFactor="1" />
 								</layoutData>
-								<viz:VizFrame id="chart1" width="430px" uiConfig="{applicationSet:'fiori'}" vizType="line"
+								<viz:VizFrame id="chart1" width="200px" uiConfig="{applicationSet:'fiori'}" vizType="line"
 									vizProperties="{ 
 										plotArea:{ 
-											dataLabel:{visible: true} 
+											dataLabel:{visible: false}
 										}, 
 										title:{text:'前期'}, 
 										valueAxis:{
@@ -167,7 +167,13 @@
 											}
 										},
 										categoryAxis:{
-											title: {visible: false}
+											title: {visible: false},
+											color: 'red',
+											label: {
+												style: {
+													fontSize: '8px'
+												}
+											}
 										},
 										legend:{
 											visible: false
