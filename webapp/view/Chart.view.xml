@@ -1,0 +1,243 @@
+<mvc:View 
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+	xmlns:viz="sap.viz.ui5.controls" 
+	xmlns:chart="sap.suite.ui.commons"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:customControl="gitTest.GitTest.customControl" 
+	xmlns="sap.m" 
+	controllerName="gitTest.GitTest.controller.Chart"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Chart">
+		<content>
+			<Table noDataText="Drop column list items here and columns in the area above" id="table0">
+				<columns>
+					<Column>
+						<header>
+							<Label text="TYPE"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="1"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="2"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="3"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="4"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="5"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="6"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="7"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="8"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="9"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="10"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="11"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="12"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="13"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="14"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="15"/>
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active" id="item1">
+						<cells>
+							<Text text="前期"></Text>
+							<Input id="f1" app:mydata="f1" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f2" app:mydata="f2" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f3" app:mydata="f3" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f4" app:mydata="f4" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f5" app:mydata="f5" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f6" app:mydata="f6" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f7" app:mydata="f7" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f8" app:mydata="f8" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f9" app:mydata="f9" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f10" app:mydata="f10" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f11" app:mydata="f11" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f12" app:mydata="f12" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f13" app:mydata="f13" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f14" app:mydata="f14" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="f15" app:mydata="f15" type="Text" width="40px" maxLength="3" change="onChange"/>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active" id="item2">
+						<cells>
+							<Text text="後期"></Text>
+							<Input id="b1" app:mydata="b1" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b2" app:mydata="b2" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b3" app:mydata="b3" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b4" app:mydata="b4" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b5" app:mydata="b5" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b6" app:mydata="b6" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b7" app:mydata="b7" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b8" app:mydata="b8" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b9" app:mydata="b9" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b10" app:mydata="b10" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b11" app:mydata="b11" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b12" app:mydata="b12" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b13" app:mydata="b13" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b14" app:mydata="b14" type="Text" width="40px" maxLength="3" change="onChange"/>
+							<Input id="b15" app:mydata="b15" type="Text" width="40px" maxLength="3" change="onChange"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<l:VerticalLayout
+				class="sapUiContentPadding"
+				width="100%">
+				<l:content>
+					<HBox
+						fitContainer="true"
+						alignItems="Stretch">
+						<items>
+							<VBox
+								fitContainer="true">
+								<layoutData>
+									<FlexItemData growFactor="1" />
+								</layoutData>
+								<viz:VizFrame id="chart1" width="430px" uiConfig="{applicationSet:'fiori'}" vizType="line"
+									vizProperties="{ 
+										plotArea:{ 
+											dataLabel:{visible: true} 
+										}, 
+										title:{text:'前期'}, 
+										valueAxis:{
+											title: {visible: false},
+											scale:{
+												fixedRange:true,
+												minValue:0,
+												maxValue:100
+											}
+										},
+										categoryAxis:{
+											title: {visible: false}
+										},
+										legend:{
+											visible: false
+										}
+									}" selectData="myOnClickHandler"
+									renderComplete="handleRenderComplete">
+									<viz:dataset>
+										<viz.data:FlattenedDataset data="{chartModel1>/}">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="key" value="{chartModel1>key}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="value" value="{chartModel1>value}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="key"/>
+										<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="value"/>
+									</viz:feeds>
+								</viz:VizFrame>
+							</VBox>
+							<VBox
+								fitContainer="true">
+								<layoutData>
+									<FlexItemData growFactor="1" />
+								</layoutData>
+								<viz:VizFrame id="chart2" width="430px" uiConfig="{applicationSet:'fiori'}" vizType="line"
+									vizProperties="{ 
+										plotArea:{ 
+											dataLabel:{visible: true} 
+										}, 
+										title:{text:'後期'}, 
+										valueAxis:{
+											title: {visible: false},
+											scale:{
+												fixedRange:true,
+												minValue:0,
+												maxValue:100
+											}
+										},
+										categoryAxis:{
+											title: {visible: false}
+										},
+										legend:{
+											visible: false
+										}
+									}" selectData="myOnClickHandler"
+									renderComplete="handleRenderComplete">
+									<viz:dataset>
+										<viz.data:FlattenedDataset data="{chartModel2>/}">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="key" value="{chartModel2>key}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="value" value="{chartModel2>value}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="key"/>
+										<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="value"/>
+									</viz:feeds>
+								</viz:VizFrame>
+							</VBox>
+						</items>
+					</HBox>
+				</l:content>
+			</l:VerticalLayout>
+			<Button text="back" press="goBack"></Button>
+		</content>
+	</Page>
+</mvc:View>

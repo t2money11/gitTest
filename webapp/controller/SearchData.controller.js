@@ -12,18 +12,16 @@ sap.ui.define([
 		 * @memberOf gitTest.GitTest.view.SearchData
 		 */
 		onInit: function () {
+		},
 
-		},
-		
-		goNext: function () {
-			
+		goChart: function () {
+
 			var oApp = this.getView().getParent();
-			oApp.to("detail");
+			oApp.to("chart");
 		},
-		
+
 		onHover: function () {
-			
-			MessageBox.alert("ABC");
+
 		}
 
 		/**

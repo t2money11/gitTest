@@ -12,14 +12,14 @@ sap.ui.define([
 				viewName: "gitTest.GitTest.view.SearchData"
 			});
 			
-			var detail = new sap.ui.view({
-				id: "detail",
+			var chart = new sap.ui.view({
+				id: "chart",
 				type: sap.ui.core.mvc.ViewType.XML,
-				viewName: "gitTest.GitTest.view.Detail"
+				viewName: "gitTest.GitTest.view.Chart"
 			});
 			
 			this.getView().byId("app").addPage(searchData);
-			this.getView().byId("app").addPage(detail);
+			this.getView().byId("app").addPage(chart);
 		}
 	});
 });

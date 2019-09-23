@@ -96,9 +96,9 @@
 					"viewType": "XML",
 					"viewName": "SearchData"
 				},
-				"Detail": {
+				"Chart": {
 					"viewType": "XML",
-					"viewName": "Detail"
+					"viewName": "Chart"
 				}
 			}
 		}
