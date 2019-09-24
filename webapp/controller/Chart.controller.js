@@ -19,49 +19,49 @@ sap.ui.define([
 
 			var aData = [{
 				key: "1",
-				value: 50
+				value: 94
 			}, {
 				key: "2",
-				value: 50
+				value: 89
 			}, {
 				key: "3",
-				value: 50
+				value: 73
 			}, {
 				key: "4",
-				value: 50
+				value: 85
 			}, {
 				key: "5",
-				value: 50
+				value: 83
 			}, {
 				key: "6",
-				value: 50
+				value: 73
 			}, {
 				key: "7",
-				value: 50
+				value: 80
 			}, {
 				key: "8",
-				value: 50
+				value: 69
 			}, {
 				key: "9",
-				value: 50
+				value: 81
 			}, {
 				key: "10",
-				value: 50
+				value: 78
 			}, {
 				key: "11",
-				value: 50
+				value: 78
 			}, {
 				key: "12",
-				value: 50
+				value: 78
 			}, {
 				key: "13",
-				value: 50
+				value: 81
 			}, {
 				key: "14",
-				value: 50
+				value: 74
 			}, {
 				key: "15",
-				value: 50
+				value: 82
 			}];
 			
 			for(var i = 0; i < aData.length; i++) {
@@ -77,49 +77,49 @@ sap.ui.define([
 
 			var aData = [{
 				key: "1",
-				value: 70
+				value: 92
 			}, {
 				key: "2",
-				value: 70
+				value: 81
 			}, {
 				key: "3",
-				value: 70
+				value: 99
 			}, {
 				key: "4",
-				value: 70
+				value: 87
 			}, {
 				key: "5",
-				value: 70
+				value: 95
 			}, {
 				key: "6",
-				value: 70
+				value: 99
 			}, {
 				key: "7",
-				value: 70
+				value: 93
 			}, {
 				key: "8",
-				value: 70
+				value: 86
 			}, {
 				key: "9",
-				value: 70
+				value: 80
 			}, {
 				key: "10",
-				value: 70
+				value: 90
 			}, {
 				key: "11",
-				value: 70
+				value: 83
 			}, {
 				key: "12",
-				value: 70
+				value: 92
 			}, {
 				key: "13",
-				value: 70
+				value: 82
 			}, {
 				key: "14",
-				value: 70
+				value: 82
 			}, {
 				key: "15",
-				value: 70
+				value: 92
 			}];
 			
 			for(var i = 0; i < aData.length; i++) {
