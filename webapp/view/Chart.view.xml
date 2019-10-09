@@ -257,96 +257,96 @@
 									<FlexItemData growFactor="1" />
 								</layoutData>
 								<viz:VizFrame id="chart3" width="200px" height="700px" uiConfig="{applicationSet:'fiori'}" vizType="line"
-										vizProperties="{ 
-											plotArea:{ 
-												dataLabel:{visible: false},
-												width: 1
-											}, 
-											title:{text:'前期'}, 
-											valueAxis:{
-												title: {visible: false},
-												scale:{
-													fixedRange:true,
-													minValue:0,
-													maxValue:100
-												}
-											},
-											categoryAxis:{
-												title: {
-													visible: true,
-													text: '1　　 5　　 10　　 15'
-												},
-												label: {
-													style: {
-														fontSize: '0px'
-													}
-												}
-											},
-											legend:{
-												visible: false
+									vizProperties="{ 
+										plotArea:{ 
+											dataLabel:{visible: false},
+											width: 1
+										}, 
+										title:{text:'前期'}, 
+										valueAxis:{
+											title: {visible: false},
+											scale:{
+												fixedRange:true,
+												minValue:0,
+												maxValue:100
 											}
-										}" selectData="myOnClickHandler"
-										renderComplete="handleRenderComplete">
-										<viz:dataset>
-											<viz.data:FlattenedDataset data="{chartModel1>/}">
-												<viz.data:dimensions>
-													<viz.data:DimensionDefinition name="key" value="{chartModel1>key}"/>
-												</viz.data:dimensions>
-												<viz.data:measures>
-													<viz.data:MeasureDefinition name="value" value="{chartModel1>value}"/>
-												</viz.data:measures>
-											</viz.data:FlattenedDataset>
-										</viz:dataset>
-										<viz:feeds>
-											<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="key"/>
-											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="value"/>
-										</viz:feeds>
-									</viz:VizFrame>
+										},
+										categoryAxis:{
+											title: {
+												visible: true,
+												text: '1　　 5　　 10　　 15'
+											},
+											label: {
+												style: {
+													fontSize: '0px'
+												}
+											}
+										},
+										legend:{
+											visible: false
+										}
+									}" selectData="myOnClickHandler"
+									renderComplete="handleRenderComplete">
+									<viz:dataset>
+										<viz.data:FlattenedDataset data="{chartModel1>/}">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="key" value="{chartModel1>key}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="value" value="{chartModel1>value}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="key"/>
+										<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="value"/>
+									</viz:feeds>
+								</viz:VizFrame>
 								<viz:VizFrame id="chart4" width="200px" height="700px" uiConfig="{applicationSet:'fiori'}" vizType="line"
-										vizProperties="{ 
-											plotArea:{ 
-												dataLabel:{visible: false}
-											}, 
-											title:{text:'前期'}, 
-											valueAxis:{
-												title: {visible: false},
-												scale:{
-													fixedRange:true,
-													minValue:0,
-													maxValue:100
-												}
-											},
-											categoryAxis:{
-												title: {
-													visible: true,
-													text: '1　　 5　　 10　　 15'
-												},
-												label: {
-													style: {
-														fontSize: '0px'
-													}
-												}
-											},
-											legend:{
-												visible: false
+									vizProperties="{ 
+										plotArea:{ 
+											dataLabel:{visible: false}
+										}, 
+										title:{text:'前期'}, 
+										valueAxis:{
+											title: {visible: false},
+											scale:{
+												fixedRange:true,
+												minValue:0,
+												maxValue:100
 											}
-										}" selectData="myOnClickHandler"
-										renderComplete="handleRenderComplete">
-										<viz:dataset>
-											<viz.data:FlattenedDataset data="{chartModel2>/}">
-												<viz.data:dimensions>
-													<viz.data:DimensionDefinition name="key" value="{chartModel2>key}"/>
-												</viz.data:dimensions>
-												<viz.data:measures>
-													<viz.data:MeasureDefinition name="value" value="{chartModel2>value}"/>
-												</viz.data:measures>
-											</viz.data:FlattenedDataset>
-										</viz:dataset>
-										<viz:feeds>
-											<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="key"/>
-											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="value"/>
-										</viz:feeds>
-									</viz:VizFrame>
+										},
+										categoryAxis:{
+											title: {
+												visible: true,
+												text: '1　　 5　　 10　　 15'
+											},
+											label: {
+												style: {
+													fontSize: '0px'
+												}
+											}
+										},
+										legend:{
+											visible: false
+										}
+									}" selectData="myOnClickHandler"
+									renderComplete="handleRenderComplete">
+									<viz:dataset>
+										<viz.data:FlattenedDataset data="{chartModel2>/}">
+											<viz.data:dimensions>
+												<viz.data:DimensionDefinition name="key" value="{chartModel2>key}"/>
+											</viz.data:dimensions>
+											<viz.data:measures>
+												<viz.data:MeasureDefinition name="value" value="{chartModel2>value}"/>
+											</viz.data:measures>
+										</viz.data:FlattenedDataset>
+									</viz:dataset>
+									<viz:feeds>
+										<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="key"/>
+										<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="value"/>
+									</viz:feeds>
+								</viz:VizFrame>
 							</HBox>
 						</items>
 					</HBox>

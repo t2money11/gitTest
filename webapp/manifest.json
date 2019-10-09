@@ -10,8 +10,17 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.40.12"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"PwC_SF_Prototype": {
+				"uri": "/odata/v2/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
 		}
 	},
 	"sap.ui": {
@@ -56,49 +65,57 @@
 				"settings": {
 					"bundleName": "gitTest.GitTest.i18n.i18n"
 				}
+			},
+			"SF_DS": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "PwC_SF_Prototype",
+				"preload": true
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"async": true,
 				"viewPath": "gitTest.GitTest.view",
-				"controlAggregation": "pages",
 				"controlId": "app",
-				"clearControlAggregation": false
+				"controlAggregation": "pages",
+				"async": true
 			},
-			"routes": [
-				{
-					"name": "RouteApp",
-					"pattern": "RouteApp",
-					"target": [
-						"TargetApp"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "Home",
+				"target": "Home"
+			}, {
+				"pattern": "Chart",
+				"name": "Chart",
+				"target": "Chart"
+			}, {
+				"pattern": "ECEP",
+				"name": "ECEP",
+				"target": "ECEP"
+			}],
 			"targets": {
-				"TargetApp": {
-					"viewType": "XML",
-					"transition": "slide",
-					"clearControlAggregation": false,
-					"viewId": "App",
-					"viewName": "App"
-				},
-				"SearchData": {
-					"viewType": "XML",
-					"viewName": "SearchData"
+				"Home": {
+					"viewId": "Home",
+					"viewName": "Home"
 				},
 				"Chart": {
-					"viewType": "XML",
+					"viewId": "Chart",
 					"viewName": "Chart"
+				},
+				"ECEP": {
+					"viewId": "ECEP",
+					"viewName": "ECEP"
 				}
 			}
 		}

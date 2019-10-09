@@ -163,8 +163,8 @@ sap.ui.define([
 		
 		goBack: function () {
 			
-			var oApp = this.getView().getParent();
-			oApp.to("searchData");
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("Home");
 		}
 
 		/**

@@ -36,6 +36,14 @@
         "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/odata/v2",
+      "target": {
+        "type": "destination",
+        "name": "PwC_SF_Prototype"
+      },
+      "description": "PwC Prototype BizX"
     }
   ],
   "sendWelcomeFileRedirect": true
