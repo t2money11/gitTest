@@ -1,23 +1,157 @@
-<mvc:View xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:viz.data="sap.viz.ui5.data"
-	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls" xmlns:chart="sap.suite.ui.commons"
-	xmlns:customControl="gitTest.GitTest.customControl" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+<mvc:View 
+	xmlns:l="sap.ui.layout" 
+	xmlns:core="sap.ui.core"
+	xmlns:t="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+	xmlns:viz="sap.viz.ui5.controls" 
+	xmlns:chart="sap.suite.ui.commons"
+	xmlns:customControl="gitTest.GitTest.customControl" 
+	xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
 	controllerName="gitTest.GitTest.controller.ECEP">
-	<Page title="Title">
+	<Page title="EPEC"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
 		<content>
-			<Table>
-			    <columns>
-			      <Column
-			        width="12em">
-			        <Text text="Product" />
-			      </Column>
-			       <Column
-			        minScreenWidth="Tablet"
-			        demandPopin="true">
-			        <Text text="Supplier" />
-			      </Column>
-			    </columns>
-			</Table>
-			<Button text="back" press="goBack"></Button>
+			<HBox>
+				<items>
+					<VBox>
+						<layoutData>
+							<FlexItemData growFactor="1" />
+						</layoutData>
+						<t:Table
+							id="PerPersonal"
+							selectionMode="None"
+							visibleRowCount="5"
+							rows="{PerPersonalModels>/}"
+							threshold="15"
+							enableBusyIndicator="true"
+							width="25rem"
+							ariaLabelledBy="title">
+							<t:extension>
+								<OverflowToolbar>
+									<Title id="title1" text="PerPersonal"></Title>
+									<ToolbarSpacer/>
+									<Button
+										icon="sap-icon://refresh"
+										tooltip="Reinitialize Model"
+										press="onPerPersonalRefresh"/>
+								</OverflowToolbar>
+							</t:extension>
+							<t:columns>
+								<t:Column width="6rem">
+									<Label text="userId"/>
+									<t:template>
+										<Text text="{PerPersonalModels>personIdExternal}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="startDate"/>
+									<t:template>
+										<Text text="{PerPersonalModels>startDate}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="firstName"/>
+									<t:template>
+										<Text text="{PerPersonalModels>firstName}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="lastName"/>
+									<t:template>
+										<Text text="{PerPersonalModels>lastName}"/>
+									</t:template>
+								</t:Column>
+							</t:columns>
+						</t:Table>
+						<Button id="historyDataTransferEC2EP" text="historyDataTransferEC2EP" press="historyDataTransferEC2EP"></Button>
+					</VBox>
+					<VBox>
+						<layoutData>
+							<FlexItemData growFactor="2" />
+						</layoutData>
+						<t:Table
+							id="Background_Test4ECEP"
+							selectionMode="None"
+							visibleRowCount="5"
+							rows="{Background_Test4ECEPModels>/}"
+							threshold="15"
+							enableBusyIndicator="true"
+							width="51rem"
+							ariaLabelledBy="title">
+							<t:extension>
+								<OverflowToolbar>
+									<Title id="title2" text="Background_Test4ECEP"></Title>
+									<ToolbarSpacer/>
+									<Button
+										icon="sap-icon://refresh"
+										tooltip="Reinitialize Model"
+										press="onBackground_Test4ECEPRefresh"/>
+								</OverflowToolbar>
+							</t:extension>
+							<t:columns>
+								<t:Column width="8rem">
+									<Label text="fromTableName"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>fromTableName}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="userId"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>userId}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="8rem">
+									<Label text="bgElementId"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>backgroundElementId}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="colName1"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>colName1}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="colValue1"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>colValue1}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="colName2"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>colName2}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="colValue2"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>colValue2}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="colName3"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>colName3}"/>
+									</t:template>
+								</t:Column>
+								<t:Column width="6rem">
+									<Label text="colValue3"/>
+									<t:template>
+										<Text text="{Background_Test4ECEPModels>colValue3}"/>
+									</t:template>
+								</t:Column>
+							</t:columns>
+						</t:Table>
+						<Button id="clearBackground_Test4ECEP" text="clearBackground_Test4ECEP" press="clearBackground_Test4ECEP"></Button>
+					</VBox>
+				</items>
+			</HBox>
 		</content>
 	</Page>
 </mvc:View>

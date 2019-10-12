@@ -161,7 +161,7 @@ sap.ui.define([
 			this.getView().getModel("chartModel1").setProperty("/", aData1);
 		},
 		
-		goBack: function () {
+		onNavBack: function () {
 			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Home");

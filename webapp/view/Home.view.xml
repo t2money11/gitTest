@@ -11,7 +11,7 @@
 	xmlns="sap.m" 
 	controllerName="gitTest.GitTest.controller.Home"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Title">
+	<Page title="Home">
 		<content>
 			<customControl:MyHeading text="CustomLable For h1"></customControl:MyHeading>
 			<customControl:MyButton text="CustomButton Hover Trigger" hover="onHover"></customControl:MyButton>

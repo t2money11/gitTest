@@ -11,7 +11,9 @@
 	xmlns="sap.m" 
 	controllerName="gitTest.GitTest.controller.Chart"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Chart">
+	<Page title="Chart"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
 		<content>
 			<Table noDataText="Drop column list items here and columns in the area above" id="table0">
 				<columns>
@@ -302,12 +304,12 @@
 										<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="value"/>
 									</viz:feeds>
 								</viz:VizFrame>
-								<viz:VizFrame id="chart4" width="200px" height="700px" uiConfig="{applicationSet:'fiori'}" vizType="line"
+								<viz:VizFrame id="chart4" width="200px" height="815px" uiConfig="{applicationSet:'fiori'}" vizType="line"
 									vizProperties="{ 
 										plotArea:{ 
 											dataLabel:{visible: false}
 										}, 
-										title:{text:'前期'}, 
+										title:{text:'後期'}, 
 										valueAxis:{
 											title: {visible: false},
 											scale:{
@@ -352,7 +354,6 @@
 					</HBox>
 				</l:content>
 			</l:VerticalLayout>
-			<Button text="back" press="goBack"></Button>
 		</content>
 	</Page>
 </mvc:View>
