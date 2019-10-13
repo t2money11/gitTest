@@ -62,6 +62,65 @@ sap.ui.define([
 			);
 		},
 		
+		onCust_testMdfWithHistoryRefresh: function () {
+			
+			var _this = this;
+			_this._busyDialog.open();
+			
+			var filters = [];
+			filters.push(new Filter("externalCode", FilterOperator.EQ, "5100010"));
+			var dataModel = _this.getOwnerComponent().getModel("SF_DS");
+			dataModel.read(
+				"/cust_testMdfWithHistory", 
+				{
+					urlParameters : {
+						fromDate : "1990-01-01"
+					},
+					filters: filters,
+					sorters : [
+						new Sorter("effectiveStartDate", true)
+					],
+					success: function(data){
+						var results = data.results;
+						for(var i = 0; i < results.length; i++){
+							results[i].effectiveStartDate = _this.safeDateFormat(results[i].effectiveStartDate);
+						}
+						_this.getOwnerComponent().setModel(new JSONModel(results), "cust_testMdfWithHistoryModels");
+						_this._busyDialog.close();
+					},
+					error: function(e) {
+						_this._busyDialog.close();
+						MessageToast.show("Get Data ERROR: " + e.message);
+					}
+				}
+			);
+		},
+		
+		onPerPersonRefresh: function () {
+			
+			var _this = this;
+			_this._busyDialog.open();
+			
+			var filters = [];
+			filters.push(new Filter("personIdExternal", FilterOperator.EQ, "5100010"));
+			var dataModel = _this.getOwnerComponent().getModel("SF_DS");
+			dataModel.read(
+				"/PerPerson", 
+				{
+					filters: filters,
+					success: function(data){
+						var results = data.results;
+						_this.getOwnerComponent().setModel(new JSONModel(results), "PerPersonModels");
+						_this._busyDialog.close();
+					},
+					error: function(e) {
+						_this._busyDialog.close();
+						MessageToast.show("Get Data ERROR: " + e.message);
+					}
+				}
+			);
+		},
+		
 		onBackground_Test4ECEPRefresh: function () {
 			
 			var _this = this;
@@ -90,32 +149,32 @@ sap.ui.define([
 			);
 		},
 		
-		clearBackground_Test4ECEP: function(){
+		onDeleteBackground_Test4ECEP: function(){
 			
 			var _this = this;
-			var filters = [];
+			
+			var listTable = _this.getView().byId("Background_Test4ECEP");
+			var selectedIndexList = listTable.getSelectedIndices();
+			if(selectedIndexList.length === 0){
+				MessageToast.show("no data selected");
+				return;
+			}
+			
+			var deleteModelList = []; 
+			for(var index in selectedIndexList){
+				var deleteModel = {};
+				deleteModel.userId = listTable.getCellControl(index, 1, false).getText();
+				deleteModel.backgroundElementId = listTable.getCellControl(index, 2, false).getText();
+				deleteModelList.push(deleteModel);
+			}
 			
 			_this._busyDialog = new BusyDialog();
 			_this._busyDialog.open();
 			
-			filters = [];
-			filters.push(new Filter("userId", FilterOperator.EQ, "5100010"));
-			var dataModel = _this.getOwnerComponent().getModel("SF_DS");
-			dataModel.read(
-				"/Background_Test4ECEP", 
-				{
-					filters: filters,
-					success: function(data){
-						_this.addBatchOperation(null, data.results);
-					},
-					error: function(e) {
-						MessageToast.show("Get Data ERROR: " + e.message);
-					}
-				}
-			);
+			_this.addBatchOperation(null, deleteModelList);
 		},
 		
-		historyDataTransferEC2EP: function(){
+		historyDataTransferEC2EP1: function(){
 			
 			var _this = this;
 			var filters = [];
@@ -124,8 +183,8 @@ sap.ui.define([
 			var orFilters;
 			var upsertBackground_Test4ECEPModel;
 			var upsertBackground_Test4ECEPModelList = [];
-			var fromPerPersonalMode;
-			var fromPerPersonalModelList = [];
+			var fromPerPersonalModel;
+			var fromPerPersonalModellList = [];
 			
 			_this._busyDialog = new BusyDialog();
 			_this._busyDialog.open();
@@ -137,7 +196,7 @@ sap.ui.define([
 				"/PerPersonal", 
 				{
 					urlParameters : {
-						toDate: "2019-10-12"
+						fromDate: "1900-01-01"
 					},
 					filters : filters,
 					sorters : [
@@ -146,27 +205,27 @@ sap.ui.define([
 					success: function(data){
 						var results = data.results;
 						//console.log("*****length: " + results.length);
-						if(results.length > 1){
-							results = results.slice(1);
+						if(results.length > 0){
+							//results = results.slice(1);
 							for(var i = 0; i < results.length; i++){
-								fromPerPersonalMode = {};
-								fromPerPersonalMode.personIdExternal = results[i].personIdExternal;
-								fromPerPersonalMode.startDate = _this.safeDateFormat(results[i].startDate);
-								fromPerPersonalMode.firstName = results[i].firstName;
-								fromPerPersonalMode.lastName = results[i].lastName;
+								fromPerPersonalModel = {};
+								fromPerPersonalModel.personIdExternal = results[i].personIdExternal;
+								fromPerPersonalModel.startDate = _this.safeDateFormat(results[i].startDate);
+								fromPerPersonalModel.firstName = results[i].firstName;
+								fromPerPersonalModel.lastName = results[i].lastName;
 								
-								fromPerPersonalModelList.push(fromPerPersonalMode);
+								fromPerPersonalModellList.push(fromPerPersonalModel);
 							}
 						}
-						//console.log("*****" + JSON.stringify(fromPerPersonalModelList));
+						//console.log("*****" + JSON.stringify(fromPerPersonalModellList));
 						//get Background_Test4ECEP
 						//try filters like (a=1 and b=2) or (a=3 and b=4) or (a=5 and b=6)...
-						if(fromPerPersonalModelList.length > 0){
-							for(var j = 0; j < fromPerPersonalModelList.length; j++){
-								fromPerPersonalMode = fromPerPersonalModelList[j];
+						if(fromPerPersonalModellList.length > 0){
+							for(var j = 0; j < fromPerPersonalModellList.length; j++){
+								fromPerPersonalModel = fromPerPersonalModellList[j];
 								andFilters = new Filter({
 									filters : [
-										new Filter("userId", FilterOperator.EQ, fromPerPersonalMode.personIdExternal),
+										new Filter("userId", FilterOperator.EQ, fromPerPersonalModel.personIdExternal),
 										//can add more and condition here
 									],
 									and: true
@@ -185,25 +244,271 @@ sap.ui.define([
 									filters: filters,
 									success: function(data1){
 										results = data1.results;
-										for(var k = 0; k < fromPerPersonalModelList.length; k++){       
-											fromPerPersonalMode = fromPerPersonalModelList[k];
+										for(var k = 0; k < fromPerPersonalModellList.length; k++){       
+											fromPerPersonalModel = fromPerPersonalModellList[k];
 											upsertBackground_Test4ECEPModel = {};
 											//if already exists
 											for(var l = 0; l < results.length; l++){
 												if(results[l].fromTableName == "PerPersonal"
-													&& results[l].colValue1 == fromPerPersonalMode.startDate){
+													&& results[l].colValue1 == fromPerPersonalModel.startDate){
 													upsertBackground_Test4ECEPModel.backgroundElementId = results[l].backgroundElementId;
 													break;
 												}
 											}
 											upsertBackground_Test4ECEPModel.fromTableName = "PerPersonal";
-											upsertBackground_Test4ECEPModel.userId = fromPerPersonalMode.personIdExternal;
+											upsertBackground_Test4ECEPModel.userId = fromPerPersonalModel.personIdExternal;
 											upsertBackground_Test4ECEPModel.colName1 = "startDate";
-											upsertBackground_Test4ECEPModel.colValue1 = fromPerPersonalMode.startDate;
+											upsertBackground_Test4ECEPModel.colValue1 = fromPerPersonalModel.startDate;
 											upsertBackground_Test4ECEPModel.colName2 = "firstName";
-											upsertBackground_Test4ECEPModel.colValue2 = fromPerPersonalMode.firstName;
+											upsertBackground_Test4ECEPModel.colValue2 = fromPerPersonalModel.firstName;
 											upsertBackground_Test4ECEPModel.colName3 = "lastName";
-											upsertBackground_Test4ECEPModel.colValue3 = fromPerPersonalMode.lastName;
+											upsertBackground_Test4ECEPModel.colValue3 = fromPerPersonalModel.lastName;
+											// __metadata
+											if(upsertBackground_Test4ECEPModel.backgroundElementId){
+												upsertBackground_Test4ECEPModel.__metadata = {
+													"uri": "Background_Test4ECEP(userId='" + upsertBackground_Test4ECEPModel.userId + "', backgroundElementId=" + upsertBackground_Test4ECEPModel.backgroundElementId + ")",
+													"type": "SFOData.Background_Test4ECEP"
+												};
+											}else{
+												upsertBackground_Test4ECEPModel.__metadata = {
+													"uri": "Background_Test4ECEP",
+													"type": "SFOData.Background_Test4ECEP"
+												};
+											}
+											
+											upsertBackground_Test4ECEPModelList.push(upsertBackground_Test4ECEPModel);
+										}
+										//console.log("length: " + results.length);
+										//console.log("####" + JSON.stringify(upsertBackground_Test4ECEPModelList));
+										
+										//call batch
+										_this.addBatchOperation(upsertBackground_Test4ECEPModelList);
+									},
+									error: function(e1) {
+										MessageToast.show("Get Data ERROR: " + e1.message);
+									}
+								}
+							);
+						}else{
+							
+							_this._busyDialog.close();
+						}
+					},
+					error: function(e) {
+						MessageToast.show("Get Data ERROR: " + e.message);
+					}
+				}
+			);
+		},
+		
+		historyDataTransferEC2EP2: function(){
+			
+			var _this = this;
+			var filters = [];
+			var andFilters;
+			var andFiltersList = [];
+			var orFilters;
+			var upsertBackground_Test4ECEPModel;
+			var upsertBackground_Test4ECEPModelList = [];
+			var fromCust_testMdfWithHistoryModel;
+			var fromCust_testMdfWithHistoryModellList = [];
+			
+			_this._busyDialog = new BusyDialog();
+			_this._busyDialog.open();
+			
+			filters = [];
+			filters.push(new Filter("externalCode", FilterOperator.EQ, "5100010"));
+			var dataModel = _this.getOwnerComponent().getModel("SF_DS");
+			dataModel.read(
+				"/cust_testMdfWithHistory", 
+				{
+					urlParameters : {
+						fromDate: "1900-01-01"
+					},
+					filters : filters,
+					sorters : [
+						new Sorter("effectiveStartDate", true)
+					],
+					success: function(data){
+						var results = data.results;
+						//console.log("*****length: " + results.length);
+						if(results.length > 0){
+							//results = results.slice(1);
+							for(var i = 0; i < results.length; i++){
+								fromCust_testMdfWithHistoryModel = {};
+								fromCust_testMdfWithHistoryModel.externalCode = results[i].externalCode;
+								fromCust_testMdfWithHistoryModel.effectiveStartDate = _this.safeDateFormat(results[i].effectiveStartDate);
+								fromCust_testMdfWithHistoryModel.externalName = results[i].externalName;
+								
+								fromCust_testMdfWithHistoryModellList.push(fromCust_testMdfWithHistoryModel);
+							}
+						}
+						//get Background_Test4ECEP
+						//try filters like (a=1 and b=2) or (a=3 and b=4) or (a=5 and b=6)...
+						if(fromCust_testMdfWithHistoryModellList.length > 0){
+							for(var j = 0; j < fromCust_testMdfWithHistoryModellList.length; j++){
+								fromCust_testMdfWithHistoryModel = fromCust_testMdfWithHistoryModellList[j];
+								andFilters = new Filter({
+									filters : [
+										new Filter("userId", FilterOperator.EQ, fromCust_testMdfWithHistoryModel.externalCode),
+										//can add more and condition here
+									],
+									and: true
+								});
+								andFiltersList.push(andFilters);
+							}
+							orFilters = new Filter({
+								filters : andFiltersList,
+								and: false
+							});
+							filters = [];
+							filters.push(orFilters);
+							dataModel.read(
+								"/Background_Test4ECEP", 
+								{
+									filters: filters,
+									success: function(data1){
+										results = data1.results;
+										for(var k = 0; k < fromCust_testMdfWithHistoryModellList.length; k++){       
+											fromCust_testMdfWithHistoryModel = fromCust_testMdfWithHistoryModellList[k];
+											upsertBackground_Test4ECEPModel = {};
+											//if already exists
+											for(var l = 0; l < results.length; l++){
+												if(results[l].fromTableName == "cust_testMdfWithHistory"
+													&& results[l].colValue1 == fromCust_testMdfWithHistoryModel.effectiveStartDate){
+													upsertBackground_Test4ECEPModel.backgroundElementId = results[l].backgroundElementId;
+													break;
+												}
+											}
+											upsertBackground_Test4ECEPModel.fromTableName = "cust_testMdfWithHistory";
+											upsertBackground_Test4ECEPModel.userId = fromCust_testMdfWithHistoryModel.externalCode;
+											upsertBackground_Test4ECEPModel.colName1 = "effectiveStartDate";
+											upsertBackground_Test4ECEPModel.colValue1 = fromCust_testMdfWithHistoryModel.effectiveStartDate;
+												upsertBackground_Test4ECEPModel.colName2 = "externalName";
+											if(fromCust_testMdfWithHistoryModel.externalName !== null){
+												upsertBackground_Test4ECEPModel.colValue2 = fromCust_testMdfWithHistoryModel.externalName;
+											}
+											// __metadata
+											if(upsertBackground_Test4ECEPModel.backgroundElementId){
+												upsertBackground_Test4ECEPModel.__metadata = {
+													"uri": "Background_Test4ECEP(userId='" + upsertBackground_Test4ECEPModel.userId + "', backgroundElementId=" + upsertBackground_Test4ECEPModel.backgroundElementId + ")",
+													"type": "SFOData.Background_Test4ECEP"
+												};
+											}else{
+												upsertBackground_Test4ECEPModel.__metadata = {
+													"uri": "Background_Test4ECEP",
+													"type": "SFOData.Background_Test4ECEP"
+												};
+											}
+											
+											upsertBackground_Test4ECEPModelList.push(upsertBackground_Test4ECEPModel);
+										}
+										//console.log("length: " + results.length);
+										//console.log("####" + JSON.stringify(upsertBackground_Test4ECEPModelList));
+										
+										//call batch
+										_this.addBatchOperation(upsertBackground_Test4ECEPModelList);
+									},
+									error: function(e1) {
+										MessageToast.show("Get Data ERROR: " + e1.message);
+									}
+								}
+							);
+						}else{
+							
+							_this._busyDialog.close();
+						}
+					},
+					error: function(e) {
+						MessageToast.show("Get Data ERROR: " + e.message);
+					}
+				}
+			);
+		},
+		
+		historyDataTransferEC2EP3: function(){
+			
+			var _this = this;
+			var filters = [];
+			var andFilters;
+			var andFiltersList = [];
+			var orFilters;
+			var upsertBackground_Test4ECEPModel;
+			var upsertBackground_Test4ECEPModelList = [];
+			var fromPerPersonModel;
+			var fromPerPersonModellList = [];
+			
+			_this._busyDialog = new BusyDialog();
+			_this._busyDialog.open();
+			
+			filters = [];
+			filters.push(new Filter("personIdExternal", FilterOperator.EQ, "5100010"));
+			var dataModel = _this.getOwnerComponent().getModel("SF_DS");
+			dataModel.read(
+				"/PerPerson", 
+				{
+					filters : filters,
+					success: function(data){
+						var results = data.results;
+						//console.log("*****length: " + results.length);
+						if(results.length > 0){
+							//results = results.slice(1);
+							for(var i = 0; i < results.length; i++){
+								fromPerPersonModel = {};
+								fromPerPersonModel.personIdExternal = results[i].personIdExternal;
+								fromPerPersonModel.countryOfBirth = results[i].countryOfBirth;
+								fromPerPersonModel.placeOfBirth = results[i].placeOfBirth;
+								
+								fromPerPersonModellList.push(fromPerPersonModel);
+							}
+						}
+						//console.log("*****" + JSON.stringify(fromPerPersonModellList));
+						//get Background_Test4ECEP
+						//try filters like (a=1 and b=2) or (a=3 and b=4) or (a=5 and b=6)...
+						if(fromPerPersonModellList.length > 0){
+							for(var j = 0; j < fromPerPersonModellList.length; j++){
+								fromPerPersonModel = fromPerPersonModellList[j];
+								andFilters = new Filter({
+									filters : [
+										new Filter("userId", FilterOperator.EQ, fromPerPersonModel.personIdExternal)
+										//can add more and condition here
+									],
+									and: true
+								});
+								andFiltersList.push(andFilters);
+							}
+							orFilters = new Filter({
+								filters : andFiltersList,
+								and: false
+							});
+							filters = [];
+							filters.push(orFilters);
+							dataModel.read(
+								"/Background_Test4ECEP", 
+								{
+									filters: filters,
+									success: function(data1){
+										results = data1.results;
+										for(var k = 0; k < fromPerPersonModellList.length; k++){       
+											fromPerPersonModel = fromPerPersonModellList[k];
+											upsertBackground_Test4ECEPModel = {};
+											//if already exists
+											for(var l = 0; l < results.length; l++){
+												if(results[l].fromTableName == "PerPerson"){
+													upsertBackground_Test4ECEPModel.backgroundElementId = results[l].backgroundElementId;
+													break;
+												}
+											}
+											upsertBackground_Test4ECEPModel.fromTableName = "PerPerson";
+											upsertBackground_Test4ECEPModel.userId = fromPerPersonModel.personIdExternal;
+											upsertBackground_Test4ECEPModel.colName1 = "countryOfBirth";
+											if(fromPerPersonModel.countryOfBirth !== null){
+												upsertBackground_Test4ECEPModel.colValue1 = fromPerPersonModel.countryOfBirth;
+											}
+											upsertBackground_Test4ECEPModel.colName2 = "placeOfBirth";
+											if(fromPerPersonModel.placeOfBirth !== null){
+												upsertBackground_Test4ECEPModel.colValue2 = fromPerPersonModel.placeOfBirth;
+											}
 											// __metadata
 											if(upsertBackground_Test4ECEPModel.backgroundElementId){
 												upsertBackground_Test4ECEPModel.__metadata = {
@@ -273,13 +578,13 @@ sap.ui.define([
 			if(executeBatchFlag){
 				dataModel.attachBatchRequestCompleted(function(e){
 		            dataModel.setUseBatch(false);
-		            _this.getView().byId("historyDataTransferEC2EP").setBusy(false);
+		            //_this.getView().byId("historyDataTransferEC2EP").setBusy(false);
 		            _this.onBackground_Test4ECEPRefresh();
 				});
 				dataModel.attachBatchRequestFailed(function(e){
 					
 		            dataModel.setUseBatch(false);
-		            _this.getView().byId("historyDataTransferEC2EP").setBusy(false);
+		            //_this.getView().byId("historyDataTransferEC2EP").setBusy(false);
 		            _this._busyDialog.close();
 		            
 		            MessageToast.show("バッチ更新処理は失敗しました: " + e.message);
@@ -289,7 +594,7 @@ sap.ui.define([
 			    });
 			} else {
 				dataModel.setUseBatch(false);
-	            _this.getView().byId("historyDataTransferEC2EP").setBusy(false);
+	            //_this.getView().byId("historyDataTransferEC2EP").setBusy(false);
 	            _this._busyDialog.close();
 	            
 	            MessageToast.show("更新対象はありません。" );
