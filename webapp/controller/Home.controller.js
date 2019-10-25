@@ -25,6 +25,12 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("ECEP");
 		},
+		
+		goDownload: function () {
+
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("Download");
+		},
 
 		onHover: function () {
 			MessageBox.show("Hovered!", {

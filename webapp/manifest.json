@@ -79,9 +79,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -92,19 +94,48 @@
 				"controlAggregation": "pages",
 				"async": true
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "Home",
-				"target": "Home"
-			}, {
-				"pattern": "Chart",
-				"name": "Chart",
-				"target": "Chart"
-			}, {
-				"pattern": "ECEP",
-				"name": "ECEP",
-				"target": "ECEP"
-			}],
+			"routes": [
+				{
+					"pattern": "",
+					"name": "Home",
+					"target": "Home"
+				},
+				{
+					"pattern": "Chart",
+					"name": "Chart",
+					"target": "Chart"
+				},
+				{
+					"pattern": "ECEP",
+					"name": "ECEP",
+					"target": "ECEP"
+				},
+				{
+					"pattern": "Download",
+					"name": "Download",
+					"target": "Download"
+				},
+				{
+					"pattern": "DownloadAll",
+					"name": "DownloadAll",
+					"target": "DownloadAll"
+				},
+				{
+					"pattern": "DownloadPerPerson",
+					"name": "DownloadPerPerson",
+					"target": "DownloadPerPerson"
+				},
+				{
+					"pattern": "DownloadPerPersonal",
+					"name": "DownloadPerPersonal",
+					"target": "DownloadPerPersonal"
+				},
+				{
+					"pattern": "DownloadEmpJobRelationships",
+					"name": "DownloadEmpJobRelationships",
+					"target": "DownloadEmpJobRelationships"
+				}
+			],
 			"targets": {
 				"Home": {
 					"viewId": "Home",
@@ -117,8 +148,32 @@
 				"ECEP": {
 					"viewId": "ECEP",
 					"viewName": "ECEP"
+				},
+				"Download": {
+					"viewId": "Download",
+					"viewName": "Download"
+				},
+				"DownloadAll": {
+					"viewId": "DownloadAll",
+					"viewName": "DownloadAll"
+				},
+				"DownloadPerPerson": {
+					"viewId": "DownloadPerPerson",
+					"viewName": "DownloadPerPerson"
+				},
+				"DownloadPerPersonal": {
+					"viewId": "DownloadPerPersonal",
+					"viewName": "DownloadPerPersonal"
+				},
+				"DownloadEmpJobRelationships": {
+					"viewId": "DownloadEmpJobRelationships",
+					"viewName": "DownloadEmpJobRelationships"
 				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }

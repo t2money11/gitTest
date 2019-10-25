@@ -1,0 +1,28 @@
+<mvc:View 
+	xmlns:l="sap.ui.layout" 
+	xmlns:core="sap.ui.core"
+	xmlns:t="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" 
+	xmlns:viz="sap.viz.ui5.controls" 
+	xmlns:chart="sap.suite.ui.commons"
+	xmlns:customControl="gitTest.GitTest.customControl" 
+	xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="gitTest.GitTest.controller.DownloadPerPerson">
+	<Page title="Download PerPerson"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+		<content>
+			<l:VerticalLayout class="sapUiContentPadding" width="100%">
+				<VBox>
+					<Label text="対象ユーザ" labelFor="multiInput"/>
+					<MultiInput id="multiInput" width="70%" showValueHelp="false"/>
+				</VBox>
+				<VBox>
+					<Button text="Download PerPerson" press="onDownload"></Button>
+				</VBox>
+			</l:VerticalLayout>
+		</content>
+	</Page>
+</mvc:View>

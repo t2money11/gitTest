@@ -22,6 +22,9 @@
 			<VBox>
 				<Button text="go to Chart" press="goChart"></Button>
 			</VBox>
+			<VBox>
+				<Button text="go to Download" press="goDownload"></Button>
+			</VBox>
 		</content>
 	</Page>
 </mvc:View>
