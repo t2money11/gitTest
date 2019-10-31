@@ -18,16 +18,16 @@ sap.ui.define([
 			var oMultiInput = this.getView().byId("multiInput");
 			oMultiInput.setTokens([
 				new Token({
-					text: "5100010",
-					key: "5100010"
-				}),
-				new Token({
 					text: "5100011",
 					key: "5100011"
 				}),
 				new Token({
-					text: "5100020",
-					key: "5100020"
+					text: "5100014",
+					key: "5100014"
+				}),
+				new Token({
+					text: "5100015",
+					key: "5100015"
 				})
 			]);
 
@@ -44,7 +44,9 @@ sap.ui.define([
 		onDownload: function () {
 
 			var loginUser = this.getOwnerComponent().getModel("loginUser").getProperty("/name");
-			loginUser = "5100014";
+			loginUser = loginUser + "@SFPART039292" + ":cde3$RFV";
+			console.log(loginUser);
+			//loginUser = "5100014";
 			
 			var tokens = this.getView().byId("multiInput").getTokens();
 			var userArray = [];
@@ -53,7 +55,7 @@ sap.ui.define([
 			});
 			var userArrayString = userArray.join(",");
 			
-			window.open("https://sapserverz3pthbmpqp.ap1.hana.ondemand.com/retire-demo/download?loginUser=" + loginUser + "&userArray=" + userArrayString + "&entity=PerPerson", "_self");
+			window.open("https://sapserverz3pthbmpqp.ap1.hana.ondemand.com/retire-demo/download?loginUser=" + loginUser + "&userArray=" + userArrayString + "&entity=EmpCompensation", "_self");
 		},
 
 		onNavBack: function () {

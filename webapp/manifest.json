@@ -121,19 +121,19 @@
 					"target": "DownloadAll"
 				},
 				{
-					"pattern": "DownloadPerPerson",
-					"name": "DownloadPerPerson",
-					"target": "DownloadPerPerson"
+					"pattern": "DownloadSelfReport",
+					"name": "DownloadSelfReport",
+					"target": "DownloadSelfReport"
 				},
 				{
-					"pattern": "DownloadPerPersonal",
-					"name": "DownloadPerPersonal",
-					"target": "DownloadPerPersonal"
+					"pattern": "DownloadEmpCompensation",
+					"name": "DownloadEmpCompensation",
+					"target": "DownloadEmpCompensation"
 				},
 				{
-					"pattern": "DownloadEmpJobRelationships",
-					"name": "DownloadEmpJobRelationships",
-					"target": "DownloadEmpJobRelationships"
+					"pattern": "DownloadEmpJob",
+					"name": "DownloadEmpJob",
+					"target": "DownloadEmpJob"
 				}
 			],
 			"targets": {
@@ -157,17 +157,17 @@
 					"viewId": "DownloadAll",
 					"viewName": "DownloadAll"
 				},
-				"DownloadPerPerson": {
-					"viewId": "DownloadPerPerson",
-					"viewName": "DownloadPerPerson"
+				"DownloadSelfReport": {
+					"viewId": "DownloadSelfReport",
+					"viewName": "DownloadSelfReport"
 				},
-				"DownloadPerPersonal": {
-					"viewId": "DownloadPerPersonal",
-					"viewName": "DownloadPerPersonal"
+				"DownloadEmpCompensation": {
+					"viewId": "DownloadEmpCompensation",
+					"viewName": "DownloadEmpCompensation"
 				},
-				"DownloadEmpJobRelationships": {
-					"viewId": "DownloadEmpJobRelationships",
-					"viewName": "DownloadEmpJobRelationships"
+				"DownloadEmpJob": {
+					"viewId": "DownloadEmpJob",
+					"viewName": "DownloadEmpJob"
 				}
 			}
 		}

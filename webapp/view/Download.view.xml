@@ -16,9 +16,9 @@
 		<content>
 			<VBox>
 				<Button text="Go Download All" press="onGoDownloadAll"></Button>
-				<Button text="Go Download PerPerson" press="onGoPerPersonDownload"></Button>
-				<Button text="Go Download PerPersonal" press="onGoPerPersonalDownload"></Button>
-				<Button text="Go Download EmpJobRelationships" press="onGoEmpJobRelationshipsDownload"></Button>
+				<Button text="Go Download EmpJob" press="onGoEmpJob"></Button>
+				<Button text="Go Download EmpCompensation" press="onGoEmpCompensation"></Button>
+				<Button text="Go Download SelfReport" press="onGoSelfReport"></Button>
 			</VBox>
 		</content>
 	</Page>

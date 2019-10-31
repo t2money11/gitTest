@@ -9,8 +9,8 @@
 	xmlns:chart="sap.suite.ui.commons"
 	xmlns:customControl="gitTest.GitTest.customControl" 
 	xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	controllerName="gitTest.GitTest.controller.DownloadPerPersonal">
-	<Page title="Download PerPersonal"
+	controllerName="gitTest.GitTest.controller.DownloadEmpJob">
+	<Page title="Download EmpJob"
 		showNavButton="true"
 		navButtonPress=".onNavBack">
 		<content>
@@ -20,7 +20,7 @@
 					<MultiInput id="multiInput" width="70%" showValueHelp="false"/>
 				</VBox>
 				<VBox>
-					<Button text="Download PerPersonal" press="onDownload"></Button>
+					<Button text="Download EmpJob" press="onDownload"></Button>
 				</VBox>
 			</l:VerticalLayout>
 		</content>

@@ -22,22 +22,22 @@ sap.ui.define([
 			oRouter.navTo("DownloadAll");
 		},
 		
-		onGoPerPersonDownload: function () {
+		onGoEmpJob: function () {
 			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("DownloadPerPerson");
+			oRouter.navTo("DownloadEmpJob");
 		},
 		
-		onGoPerPersonalDownload: function () {
+		onGoEmpCompensation: function () {
 			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("DownloadPerPersonal");
+			oRouter.navTo("DownloadEmpCompensation");
 		},
 		
-		onGoEmpJobRelationshipsDownload: function () {
+		onGoSelfReport: function () {
 			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.navTo("DownloadEmpJobRelationships");
+			oRouter.navTo("DownloadSelfReport");
 		},
 		
 		onNavBack: function () {
