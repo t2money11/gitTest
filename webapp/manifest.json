@@ -20,6 +20,13 @@
 				"settings": {
 					"localUri": "localService/metadata.xml"
 				}
+			},
+			"myservice.xsodata": {
+				"uri": "/TEST_SCHEMA/test_pkg/myservice.xsodata/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/myservice.xsodata/metadata.xml"
+				}
 			}
 		}
 	},
@@ -75,6 +82,16 @@
 					"useBatch": false
 				},
 				"dataSource": "PwC_SF_Prototype",
+				"preload": true
+			},
+			"TEST_SCHEMA": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "myservice.xsodata",
 				"preload": true
 			}
 		},
@@ -134,6 +151,16 @@
 					"pattern": "DownloadEmpJob",
 					"name": "DownloadEmpJob",
 					"target": "DownloadEmpJob"
+				},
+				{
+					"pattern": "Crud",
+					"name": "Crud",
+					"target": "Crud"
+				},
+				{
+					"pattern": "TestSelectHelper",
+					"name": "TestSelectHelper",
+					"target": "TestSelectHelper"
 				}
 			],
 			"targets": {
@@ -168,6 +195,14 @@
 				"DownloadEmpJob": {
 					"viewId": "DownloadEmpJob",
 					"viewName": "DownloadEmpJob"
+				},
+				"Crud": {
+					"viewId": "Crud",
+					"viewName": "Crud"
+				},
+				"TestSelectHelper": {
+					"viewId": "TestSelectHelper",
+					"viewName": "TestSelectHelper"
 				}
 			}
 		}

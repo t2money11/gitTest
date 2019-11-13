@@ -1,0 +1,26 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core">
+	<Dialog id="createUpdateUserInfo" title="createUpdateUserInfo">
+		<VBox class="sapUiSmallMargin">
+			<f:SimpleForm editable="true" singleContainerFullSize="false">
+				<f:content>
+					<VBox>
+						<Label text="ID"/>
+						<Input id="ID" value="{ID}"/>
+						<Label text="Name"/>
+						<Input id="Name" value="{Name}"/>
+						<Label text="Location"/>
+						<Input id="Location" value="{Location}"/>
+						<HBox class="paddingTopClass">
+							<Button text="save" press="onSave"></Button>
+							<Button class="paddingLeftClass" text="Cancel" press="onCancel"></Button>
+						</HBox>
+					</VBox>
+				</f:content>
+			</f:SimpleForm>
+		</VBox>
+	</Dialog>
+</core:FragmentDefinition>

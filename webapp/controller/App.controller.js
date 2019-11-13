@@ -5,8 +5,6 @@ sap.ui.define([
 
 	return Controller.extend("gitTest.GitTest.controller.App", {
 		onInit: function () {
-			
-		
 		}
 	});
 });

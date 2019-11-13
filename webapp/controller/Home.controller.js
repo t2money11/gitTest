@@ -31,6 +31,18 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("Download");
 		},
+		
+		goCrud: function () {
+
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("Crud");
+		},
+		
+		goTestSelectHelper: function () {
+
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("TestSelectHelper");
+		},
 
 		onHover: function () {
 			MessageBox.show("Hovered!", {

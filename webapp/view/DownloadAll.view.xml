@@ -8,7 +8,9 @@
 	xmlns:viz="sap.viz.ui5.controls" 
 	xmlns:chart="sap.suite.ui.commons"
 	xmlns:customControl="gitTest.GitTest.customControl" 
-	xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form"
 	controllerName="gitTest.GitTest.controller.DownloadAll">
 	<Page title="Download All"
 		showNavButton="true"
@@ -20,12 +22,15 @@
 					<MultiInput id="multiInput" width="70%" showValueHelp="false"/>
 					
 					<Label text="対象機能" labelFor="radioButtonGroup" class="paddingTopClass"/>
-					<CheckBox id="EmpJob" text="Download EmpJob" />
-					<CheckBox id="EmpCompensation" text="Download EmpCompensation" />
+					<CheckBox id="EmpJob" text="Download ECPY UserProfileInfo" />
+					<CheckBox id="EmpCompensation" text="Download UserProfile" />
 					<CheckBox id="SelfReport" text="Download SelfReport" />
 				</VBox>
 				<VBox>
 					<Button text="Download" press="onDownload"></Button>
+				</VBox>
+				<VBox>
+					<Button text="Open Text" press="openText"></Button>
 				</VBox>
 			</l:VerticalLayout>
 		</content>

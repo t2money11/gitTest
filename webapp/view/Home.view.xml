@@ -25,6 +25,12 @@
 			<VBox>
 				<Button text="go to Download" press="goDownload"></Button>
 			</VBox>
+			<VBox>
+				<Button text="go to Crud" press="goCrud"></Button>
+			</VBox>
+			<VBox>
+				<Button text="go to TestSelectHelper" press="goTestSelectHelper"></Button>
+			</VBox>
 		</content>
 	</Page>
 </mvc:View>
